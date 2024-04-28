@@ -1,0 +1,53 @@
+/* .parent{
+    background-color: blue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+} */
+
+/* .child{
+background-color: aquamarine;
+border: 1px solid red;
+/* width: 30px; */
+/* flex-basis: 40px;
+flex-shrink: 0;
+}
+.child.searchbox{
+    flex-grow: 3;
+    flex-shrink: 1;
+} */ */
+
+
+.parent{
+    background-color: rgb(72, 72, 181);
+    display: flex;
+    justify-content: space-around;
+    align-items: ;
+}
+.child{
+    background-color: aquamarine;
+    border: 1px solid red;
+    
+}
+
+/* .parent2{
+    justify-content: space-between;
+}
+
+.parent1{
+    justify-content: space-evenly;
+}
+
+.parent1{
+    justify-content: space-around;
+}
+
+.parent1{
+    justify-content: flex-end;
+
+
+FLEXBOX
+
+
+
+} */

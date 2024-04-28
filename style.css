@@ -1,0 +1,19 @@
+.heading p{
+    background-color: blanchedalmond;
+    /*content and element*/
+    padding: 0cqb;
+    /*gap between two element*/
+    margin: 16px; 
+    margin: 10px;/*for all side*/
+    margin: 16px 20px;/*topbottom leftright*/
+    margin: 10px 20px 16px ;/*top rightleft bottom*/
+    margin: 10px 20px 16px 18px; /*clockwise top right bottom left*/
+    /*physical pixel,box model,selectors,margin*/
+}
+
+div{
+    text-align: center;
+}
+img{
+    position: absolute;
+}
