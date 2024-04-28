@@ -1,181 +1,112 @@
-// let a= new String("hello");
-// let b = "hello"
-// if(a==b)
-//   {
-//     console.log("yes");
-//   } 
-//   else{
-//     console.log("no");
-//   }
-
-
-
-// const obj={
-//   "name":"ajay",
-//   "last-name":"singh"
-// }
-// const str = JSON.stringify(obj);
-// document.write(str);
-//let mai reassissgnment is not allowed but with constt reasssignment is not allowed
-//in constt inside a block everything is fixed
-
-
-//array
-// let arr=[1,2,3,4];
-// arr=[3,4];
-// arr[1]=20;
-// arr[10]=20;
-// console.log(arr);
-// arr.push(0);
-// arr.pop();
-// arr.shift();//delete the elment from starting
-// arr.unshift(0);//adding the lment from starting
-
-// console.log(arr);
-// console.log(arr.length);
-
-// const obj={
-//       "name":"ajay",
-//       "last-name":"singh"
-//     }
-//     let arr=[1,2,3,4];
-//     arr[2]=4;
-//     console.log(typeof(obj));
-//     console.log(typeof(arr));
-//     console.log(Array.isArray(obj));
-//     console.log(Array.isArray(arr));
-
-
-// //checking what dunction is array or not
-//     function myFunction(h) {
-//         if (Array.isArray(h))
-//         {
-//             console.log("it is array not object");
-//         }
-//         else if(typeof[x]=="object"){
-//             console.log("object");
-//         }
-//         else{
-//             console.log(" not object");
-//         }
-//       }
-//     myFunction([1,2,3,4]);
-//     myFunction("hello");
-//     myFunction(typeof(obj));//typeof array is also object
-//     myFunction(typeof(arr));
+//this is the one way to get result by changing it 
+//into string
+// const fs = require('node:fs');
 
+// const data = fs.readFileSync('./myread.txt');
+// console.log(data);
 
-//looping
-// const arr = ['name',2,true];
-// const obj={
-// 'name':"ajay",age:20,
-// };
-// // for(let i=0;i<4;i++)
-// // {
-// //     console.log(i);
-// // }
-// // for(let i of arr){
-// //     console.log(i);
-// // }
-// for(let i in obj ){
-//     console.log(i);
-// }
+// console.log(data.toString());
 
 
-//DOM
-// window.console.log(window)
-// window.console.log(window.innerHeight)
-// window.console.log(window.innerWidth)
+// //second method to tell that it is string by encoding way
+// //using command utf8
+// // const fs = require('node:fs');
+// const fs = require('node:fs'); //like this also
+// const data = fs.readFileSync('./myread.txt',{encoding:'utf8'});
+// console.log(data);
 
 
-// console.log(window.document)
-// console.log(window)
 
-// console.log(window.document)
-// console.log(window)
-// console.dir(window.document)
-// console.dir(window)
+// BUFFERRRRRRRRRRRRRRRRRRRR
+// const b= new Buffer.from('ABCD');
+// b.write('other');
+// console.log(b.toString());
 
 
-// const res = document.getElementsByTagName('h3');
-// console.log(res);
 
-// const res = document.getElementById('ht1');
-// console.log(res);
-//only one can be return by function elementbyid
-//we hav eto mention id on html page for accessing
+// const fs = require('fs');
+// FileSystem.writeFileSync('./myread.txt',"10th april 2024:day7");
+// console.log(data);
 
-// const res = document.querySelectorAll('div>h3');
-// console.log(res);
-//make class in html for accessing
 
-// const res = document.getElementById("ht1")
-// console.log(res);
+// const fs = require('fs');
+// console.log("start");
+// const data = fs.readFileSync('./myread.txt',{encoding:'utf8'});
+// console.log(data);
+// console.log("end");
 
 
+//promises in file system
+// const fsPromises = require('fs/promises');
+// console.log("start")
+// const pr = fsPromises.readFile("./myread.txt",{encoding:'utf8'});
+// console.log(pr)
+// pr.then((res)=>{
+//     console.log(res);
+// })
+// console.log("end");
 
-//not possible to change the tag name
-// const res = document.getElementsByTagName("p")
-// console.log(res);
-// res[0].tagName = "h2"
 
-//not possible to chane the tag name
-// const res = document.getElementsByTagName("p")
-// console.log(res);
-// s[0].setattribute('class','c1');
 
+//callback in file system
+// const fs = require('fs');
 
-// const ne= document.createElement("h2");
-// ne.innerText = "dynamic text";
-// // console.log(ne);
-// document.body.appendChild(ne);
+// fs.readFile('./myread.txt',{encoding:'utf8'},(err,data)=>{
+//     console.log(data);
+// });
 
 
-const ne= document.createElement("h2");
-ne.innerText = "dynamic text";
-// console.log(ne);
-const firstdiv = document.getElementById('ht');
-firstdiv.appendChild(ne);
 
+//http://localhost:1400/
 
-const w = document.getElementById('ht2');
-w.remove();
+const http = require('http');
+const fs=require('fs');
+const data=fs.
+const htmlTemplate=`
+<!DOCTYPE html>
+<html>
+<head>
+<style></style>
 
+</head>
+<body>
+    ....PRODUCT CARDS....
+</body>
+</html>
 
+`
+const cardTemplate=`
+<div class='product-card'>
+<h4>_TITLE_</h4>
+<p>_INFO_</p>
+</div>
+`
+const card1 = cardTemplate.replace('_TITLE_','XIOMI Note 11 pro')
+.replace('_INFO_','this is the chinese mobile');
 
+const card2 = cardTemplate.replace('_TITLE_','iphone Note 11 pro')
+.replace('_INFO_','this is the  mobile');
 
+const allcard=card1+card2
+console.log("\n:card1",card1)
+console.log("\n:card2",card2)
 
 
+const page = htmlTemplate.replace('_PRODUCT_CARDS_',card1);
+const app = http.createServer((req,res)=>{
+// console.log("request received");
+console.log(req.url);
+res.writeHead(200,{'content-type':'text/html',})
+res.end (page);
+// res.end;   //('<h2>hello!</h2>')
+ });
+app.listen(2200,()=>{
+console.log("..........server started......."); 
+//greater than 1000 lesser than 9999
+});
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+////port mistake
+//convert json to object 
+//object into json
